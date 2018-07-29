@@ -12,8 +12,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.bolsademercado.app.services.PuestoService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 @RequestMapping(value = "/puestos")
@@ -31,16 +29,6 @@ public class PuestoController {
 
 		Iterable<Object> puestoList = puestoService.listAllPuestosByEstablecimiento(establecimientoId,
 				(long) httpSession.getAttribute("personaId"));
-		
-		ObjectMapper obj = new ObjectMapper();
-		for (Object item : puestoList) {
-			try {
-				System.out.println(obj.writeValueAsString(item));
-			} catch (JsonProcessingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 		
 		model.addAttribute("puestoList", puestoList);
 

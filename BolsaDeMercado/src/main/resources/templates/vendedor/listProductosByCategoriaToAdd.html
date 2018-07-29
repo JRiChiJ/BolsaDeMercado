@@ -23,13 +23,13 @@
 			<table class="twelve columns">
 				<thead>
 					<tr>
-						<th>Categoria</th>
+						<th>Producto</th>
 					</tr>
 				</thead>
 				<tbody>
-					<th:block th:each="categoria : ${categoriaList}">
+					<th:block th:each="producto : ${productList}">
 						<tr>
-							<td><a th:href="@{'/productos/listProductosByCategoriaToAdd?categoriaId='+${categoria.categoriaId}+'&puestoId='+${puestoId}}" th:text="${categoria.nombre}"></a></td>
+							<td><a th:href="@{'/productos/addComercialProductoToPuesto?categoriaId='+${categoriaId}+'&puestoId='+${puestoId}+'&productoId='+${producto.productoId}}" th:text="${producto.nombre}"></a></td>
 						</tr>
 					</th:block>
 				</tbody>

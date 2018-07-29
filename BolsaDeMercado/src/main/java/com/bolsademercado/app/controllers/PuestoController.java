@@ -22,8 +22,8 @@ public class PuestoController {
 			@RequestParam(name = "establecimientoId", required = true, defaultValue = "0") Long establecimientoId) {
 		
 		
-		Iterable<Object> puestoList = puestoService.listAllPuestosByEstablecimiento(establecimientoId);
-		model.addAttribute("puestoList", puestoList);
+		//Iterable<Object> puestoList = puestoService.listAllPuestosByEstablecimiento(establecimientoId);
+		//model.addAttribute("puestoList", puestoList);
 		
 		
 		

@@ -7,4 +7,6 @@ import com.bolsademercado.app.models.Categoria;
 
 public interface CategoriaRepository extends CrudRepository<Categoria, Long> {
 	Iterable<Categoria> listarCategorias(@Param("nombre") String nombre);
+
+	Iterable<Object> listCategoriasByPersonaPuestoWithProducts(@Param("puestoId") Long puestoId);
 }

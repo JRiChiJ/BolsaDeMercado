@@ -6,5 +6,5 @@ import org.springframework.data.repository.query.Param;
 import com.bolsademercado.app.models.Categoria;
 
 public interface CategoriaRepository extends CrudRepository<Categoria, Long> {
-	Categoria listarCategorias(@Param("nombre") String nombre);
+	Iterable<Categoria> listarCategorias(@Param("nombre") String nombre);
 }

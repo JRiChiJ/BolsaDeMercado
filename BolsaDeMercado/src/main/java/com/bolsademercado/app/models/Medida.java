@@ -4,28 +4,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@NamedQueries ({
-	@NamedQuery(query = "FROM Categoria c WHERE c.nombre LIKE :nombre", name = "Categoria.listarCategorias")
-})
-@Table(name = "categorias")
-public class Categoria {
+
+@Table(name = "medidas")
+public class Medida {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long categoriaId;
+	private Long medidaId;
 	
 	private String nombre;
+	private String simbolo;
 	private int status;
-	
-	public Long getCategoriaId() {
-		return categoriaId;
+	public Long getMedidaId() {
+		return medidaId;
 	}
-	public void setCategoriaId(Long categoriaId) {
-		this.categoriaId = categoriaId;
+	public void setMedidaId(Long medidaId) {
+		this.medidaId = medidaId;
 	}
 	public String getNombre() {
 		return nombre;
@@ -33,11 +29,18 @@ public class Categoria {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	public String getSimbolo() {
+		return simbolo;
+	}
+	public void setSimbolo(String simbolo) {
+		this.simbolo = simbolo;
+	}
 	public int getStatus() {
 		return status;
 	}
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	
 	
 }

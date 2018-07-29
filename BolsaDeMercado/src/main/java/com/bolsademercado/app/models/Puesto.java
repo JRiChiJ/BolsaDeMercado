@@ -12,36 +12,41 @@ public class Puesto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long puestoId;
-	
+
 	private Long establecimientoId;
 	private Long duenoId;
 	private int status;
-	
+
 	public Long getPuestoId() {
 		return puestoId;
 	}
+
 	public void setPuestoId(Long puestoId) {
 		this.puestoId = puestoId;
 	}
+
 	public Long getEstablecimientoId() {
 		return establecimientoId;
 	}
+
 	public void setEstablecimientoId(Long establecimientoId) {
 		this.establecimientoId = establecimientoId;
 	}
+
 	public Long getDuenoId() {
 		return duenoId;
 	}
+
 	public void setDuenoId(Long duenoId) {
 		this.duenoId = duenoId;
 	}
+
 	public int getStatus() {
 		return status;
 	}
+
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	
-		
 
 }

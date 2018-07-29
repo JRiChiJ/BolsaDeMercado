@@ -4,9 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(query = "FROM Establecimiento e LEFT JOIN Puesto p ON p.establecimientoId = e.establecimientoId WHERE p.duenoId = :personaId OR p.vendedorId = :personaId AND p.establecimientoId = e.establecimientoId", name = "Establecimiento.listAllEstablecimientosByPersona") })
 @Table(name = "establecimientos")
 public class Establecimiento {
 	@Id

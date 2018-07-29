@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+  	<meta charset="UTF-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  	<!-- Skeleton CSS -->
+  	<link rel="stylesheet" type="text/css" th:href="@{/css/skeleton/normalize.css}"/>
+  	<link rel="stylesheet" type="text/css" th:href="@{/css/skeleton/skeleton.css}"/>
+  	
+  	<!-- Fonts CSS -->
+  	<link rel="stylesheet" type="text/css" th:href="@{/css/main/fonts.css}"/>
+  	
+  	<!-- Main CSS -->
+  	<link rel="stylesheet" type="text/css" th:href="@{/css/main/style.css}"/>
+  	
+  	<!-- Login CSS -->
+  	<link rel="stylesheet" type="text/css" th:href="@{/css/main/login.css}"/>
+  
+  </head>
+  <body>
+	<main class="container">
+		<div class="row">
+			<div class="offset-by-two eight columns loginBox">
+				<h5 class="text-center">Bienvenido al sistema</h5>
+				<div class="twelve columns errorList" id="errorList" style="display: none">
+					<b>Se han producido los siguientes errores:</b>
+					<div>
+					</div>
+				</div>
+				<form id="loginForm" method="POST">
+					<div class="row">
+						<label>Usuario</label>
+						<input class="u-full-width" type="text" name="username" id="username">
+					</div>
+					<div class="row">
+						<label>Contraseña</label>
+						<input class="u-full-width" type="password" name="password" id="password">
+					</div>
+					<div class="row text-center">
+						<button type="submit" class="button-primary">Ingresar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</main>
+
+    <!-- JQuery JS -->
+  	<script type="text/javascript" th:src="@{/js/jquery/jquery-3.3.1.min.js}"></script>
+  	<script type="text/javascript" th:src="@{/js/main/login.js}"></script>
+  </body>
+</html>

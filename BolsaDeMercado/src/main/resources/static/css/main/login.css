@@ -1,0 +1,30 @@
+html,body {
+	background-color: #000000;
+}
+
+.loginBox {
+	background-color: #FFFFFF;
+	margin-bottom: 10vh;
+	margin-top: 10vh;
+	padding: 4rem;
+}
+
+.loginBox h5 {
+	font-size: 2rem;
+	text-transform: uppercase;
+}
+
+.errorList {
+	background-color: rgba(255, 0, 0, 0.8);
+	color: #FFFFFF;
+	margin-bottom: 2rem;
+	padding: 1.2rem 2.5rem;
+}
+
+.errorList p {
+	margin: 0;
+}
+
+.errorList p:before {
+	content: "- ";
+}

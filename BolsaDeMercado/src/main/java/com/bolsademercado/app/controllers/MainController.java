@@ -24,23 +24,12 @@ public class MainController {
 		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder
 				.currentRequestAttributes();
 		HttpSession httpSession = servletRequestAttributes.getRequest().getSession();
-
-		httpSession.setAttribute("personaId", (long) 1);
-
-		ObjectMapper obj = new ObjectMapper();
-		Iterable<Object> cat = categoriaService
-				.listCategoriasByPersonaPuestoWithProducts((long) httpSession.getAttribute("personaId"));
-
-		for (Object item : cat) {
-			try {
-				System.out.println(obj.writeValueAsString(item));
-			} catch (JsonProcessingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		
+		if (httpSession.getAttribute("isLogged") != null) {
+			return "redirect:/establecimientos/listAllEstablecimientosByPersona";
+		} else {
+			return "redirect:/user/login";
 		}
-
-		return "layout/layout";
 	}
 
 }

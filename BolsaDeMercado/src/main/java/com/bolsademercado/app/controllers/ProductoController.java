@@ -2,12 +2,16 @@ package com.bolsademercado.app.controllers;
 
 import java.time.LocalDateTime;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.bolsademercado.app.models.DetallePuestoProducto;
 import com.bolsademercado.app.models.Historial;
@@ -39,13 +43,21 @@ public class ProductoController {
 			@RequestParam(name = "categoriaId", required = true, defaultValue = "0") Long categoriaId,
 			@RequestParam(name = "puestoId", required = true, defaultValue = "0") Long puestoId) {
 
-		Iterable<Producto> productList = productoService.listAllProductosByCategory(categoriaId);
+		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder
+				.currentRequestAttributes();
+		HttpSession httpSession = servletRequestAttributes.getRequest().getSession();
+		
+		if (httpSession.getAttribute("isLogged") != null) {
+			Iterable<Producto> productList = productoService.listAllProductosByCategory(categoriaId);
 
-		model.addAttribute("productList", productList);
-		model.addAttribute("categoriaId", categoriaId);
-		model.addAttribute("puestoId", puestoId);
+			model.addAttribute("productList", productList);
+			model.addAttribute("categoriaId", categoriaId);
+			model.addAttribute("puestoId", puestoId);
 
-		return "vendedor/listProductosByCategoriaToAdd";
+			return "vendedor/listProductosByCategoriaToAdd";
+		} else {
+			return "redirect:/user/login";
+		}
 	}
 
 	@RequestMapping(value = "addComercialProductoToPuesto", method = RequestMethod.GET)
@@ -53,11 +65,20 @@ public class ProductoController {
 			@RequestParam(name = "categoriaId", required = true, defaultValue = "0") Long categoriaId,
 			@RequestParam(name = "puestoId", required = true, defaultValue = "0") Long puestoId,
 			@RequestParam(name = "productoId", required = true, defaultValue = "0") Long productoId) {
-
-		model.addAttribute("categoriaId", categoriaId);
-		model.addAttribute("puestoId", puestoId);
-		model.addAttribute("productoId", productoId);
-		return "vendedor/addComercialProductoToPuesto";
+		
+		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder
+				.currentRequestAttributes();
+		HttpSession httpSession = servletRequestAttributes.getRequest().getSession();
+		
+		if (httpSession.getAttribute("isLogged") != null) {
+			model.addAttribute("categoriaId", categoriaId);
+			model.addAttribute("puestoId", puestoId);
+			model.addAttribute("productoId", productoId);
+			
+			return "vendedor/addComercialProductoToPuesto";
+		} else {
+			return "redirect:/user/login";
+		}
 	}
 
 	@RequestMapping(value = "submitAddComercialProductoToPuesto", method = RequestMethod.POST)
@@ -68,26 +89,33 @@ public class ProductoController {
 			@RequestParam(name = "medidaId", required = true, defaultValue = "0") Long medidaId,
 			@RequestParam(name = "cantidad", required = true, defaultValue = "0") Double cantidad,
 			@RequestParam(name = "precio", required = true, defaultValue = "0") Double precio) {
-		
-			DetallePuestoProducto detallePuestoProducto = new DetallePuestoProducto();
-			detallePuestoProducto.setProductoId(productoId);
-			detallePuestoProducto.setPuestoId(puestoId);
-			DetallePuestoProducto record = detallePuestoProductoService.addDetallePuestoProducto(detallePuestoProducto);
 			
-			Inventario inventario = new Inventario();
-			inventario.setCantidad(cantidad);
-			inventario.setMedidaId(medidaId);
-			inventario.setDetalleId(record.getDetalleId());
-			inventarioService.addInventario(inventario);
+			ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder
+					.currentRequestAttributes();
+			HttpSession httpSession = servletRequestAttributes.getRequest().getSession();
 			
-			Historial historial = new Historial();
-			historial.setDetalleId(record.getDetalleId());
-			historial.setMedidaId(medidaId);
-			historial.setPrecio(precio);
-			historial.setFecha(LocalDateTime.now());
-			historialService.addHistorial(historial);
-			
-
-		return "redirect:/productos/addComercialProductoToPuesto?categoriaId="+categoriaId+"&puestoId="+puestoId+"&productoId="+productoId;
+			if (httpSession.getAttribute("isLogged") != null) {
+				DetallePuestoProducto detallePuestoProducto = new DetallePuestoProducto();
+				detallePuestoProducto.setProductoId(productoId);
+				detallePuestoProducto.setPuestoId(puestoId);
+				DetallePuestoProducto record = detallePuestoProductoService.addDetallePuestoProducto(detallePuestoProducto);
+				
+				Inventario inventario = new Inventario();
+				inventario.setCantidad(cantidad);
+				inventario.setMedidaId(medidaId);
+				inventario.setDetalleId(record.getDetalleId());
+				inventarioService.addInventario(inventario);
+				
+				Historial historial = new Historial();
+				historial.setDetalleId(record.getDetalleId());
+				historial.setMedidaId(medidaId);
+				historial.setPrecio(precio);
+				historial.setFecha(LocalDateTime.now());
+				historialService.addHistorial(historial);
+				
+				return "redirect:/productos/addComercialProductoToPuesto?categoriaId="+categoriaId+"&puestoId="+puestoId+"&productoId="+productoId;
+			} else {
+				return "redirect:/user/login";
+			}
 	}
 }

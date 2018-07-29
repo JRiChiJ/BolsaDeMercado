@@ -24,12 +24,17 @@ public class EstablecimientoController {
 		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder
 				.currentRequestAttributes();
 		HttpSession httpSession = servletRequestAttributes.getRequest().getSession();
-
-		Iterable<Object> establecimientoList = establecimientoService
-				.listAllEstablecimientosByPersona((long) httpSession.getAttribute("personaId"));
-		model.addAttribute("establecimientoList", establecimientoList);
-
-		return "vendedor/listaEstablecimientos";
+		
+		if (httpSession.getAttribute("isLogged") != null) {
+			Iterable<Object> establecimientoList = establecimientoService
+					.listAllEstablecimientosByPersona((long) httpSession.getAttribute("personaId"));
+			model.addAttribute("establecimientoList", establecimientoList);
+			
+			return "vendedor/listaEstablecimientos";
+		} else {
+			return "redirect:/user/login";
+		}
+		
 	}
 
 }

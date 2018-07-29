@@ -27,11 +27,17 @@ public class PuestoController {
 				.currentRequestAttributes();
 		HttpSession httpSession = servletRequestAttributes.getRequest().getSession();
 
-		Iterable<Object> puestoList = puestoService.listAllPuestosByEstablecimiento(establecimientoId,
-				(long) httpSession.getAttribute("personaId"));
+		if (httpSession.getAttribute("isLogged") != null) {
+			Iterable<Object> puestoList = puestoService.listAllPuestosByEstablecimiento(establecimientoId,
+					(long) httpSession.getAttribute("personaId"));
+			
+			model.addAttribute("puestoList", puestoList);
+			
+			return "vendedor/listAllPuestosByEstablecimiento";
+		} else {
+			return "redirect:/user/login";
+		}
 		
-		model.addAttribute("puestoList", puestoList);
-
-		return "vendedor/listAllPuestosByEstablecimiento";
+		
 	}
 }

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Skeleton CSS -->
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/skeleton/normalize.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/skeleton/skeleton.css}" />
+
+<!-- Fonts CSS -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/main/fonts.css}" />
+
+<!-- Main CSS -->
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/main/visitor.css}" />
+
+</head>
+<body>
+
+	<main class="container">
+	<h5 class="text-center">Tabla de guia para compra / venta de
+		productos</h5>
+	<div class="row tableContainer">
+
+		<!-- Filter -->
+		<div class="three columns filterColumn">FILTROS</div>
+
+		<!-- Tabla -->
+		<div class="nine columns dataColumn">
+			<table class="u-full-width">
+				<thead>
+					<tr>
+						<th>Categoria</th>
+						<th>Producto</th>
+						<th>Inventario existente<br><b>(General)</b></th>
+						<th>Medida</th>
+						<th>Precio unitario<br><b>(Promedio)</b></th>
+						<!-- <th>Opciones</th> -->
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:each="producto : ${productList}">
+						<tr>
+							<td th:text="${producto[1]}"></td>
+							<td th:text="${producto[2]}"></td>
+							<td th:text="${producto[0]} + ' ' + ${producto[4]}"></td>
+							<td th:text="${producto[3]} + ' - ' + ${producto[4]}"></td>
+							<td th:text="${producto[5]} + ' Bs'"></td>
+							<!-- <td>OPCIONES</td> -->
+						</tr>
+					</th:block>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	</main>
+
+	<script type="text/javascript"
+		th:src="@{/js/jquery/jquery-3.3.1.min.js}"></script>
+</body>
+</html>

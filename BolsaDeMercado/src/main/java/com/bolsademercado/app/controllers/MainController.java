@@ -19,7 +19,7 @@ public class MainController {
 	@Autowired
 	private CategoriaService categoriaService;
 
-	@RequestMapping(value = "/")
+	@RequestMapping(value = "/admin")
 	public String test(Model model) {
 		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder
 				.currentRequestAttributes();
@@ -30,6 +30,11 @@ public class MainController {
 		} else {
 			return "redirect:/user/login";
 		}
+	}
+	
+	@RequestMapping(value ="/")
+	public String visitor(Model model) {
+		return "redirect:/visitor/home";
 	}
 
 }

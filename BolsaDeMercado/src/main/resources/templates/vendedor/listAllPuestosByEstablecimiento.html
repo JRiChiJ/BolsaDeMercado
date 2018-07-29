@@ -57,7 +57,7 @@
 						<h5 class="row">
 							<span class="six columns" th:text="'Puesto nro. ' + ${puesto[0].puestoId}"></span>
 							<div class="six columns text-right">
-								<a th:href="@{/categorias/listAllCategoriesToAddPuesto?puestoId=1}">Administrar</a>
+								<a th:href="@{'/categorias/listAllCategoriesToAddPuesto?puestoId=' + ${puesto[0].puestoId}}">Administrar</a>
 							</div>
 						</h5>
 					</div>

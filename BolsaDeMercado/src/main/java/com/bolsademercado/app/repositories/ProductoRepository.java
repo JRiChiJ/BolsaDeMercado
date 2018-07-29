@@ -7,6 +7,8 @@ import com.bolsademercado.app.models.Producto;
 
 public interface ProductoRepository extends CrudRepository<Producto, Long> {
 	
+	Iterable<Object> listAllProductosForVisitors();
+	
 	Producto dataById(@Param("productoId") Long productoId);
 	
 	Iterable<Producto> listAllProductosByCategory(@Param("categoriaId") Long categoriaId);

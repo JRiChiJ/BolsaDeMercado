@@ -15,6 +15,7 @@ public class Puesto {
 
 	private Long establecimientoId;
 	private Long duenoId;
+	private Long vendedorId;
 	private int status;
 
 	public Long getPuestoId() {
@@ -47,6 +48,14 @@ public class Puesto {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+	public Long getVendedorId() {
+		return vendedorId;
+	}
+
+	public void setVendedorId(Long vendedorId) {
+		this.vendedorId = vendedorId;
 	}
 
 }

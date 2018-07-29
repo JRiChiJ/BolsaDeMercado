@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+  	<meta charset="UTF-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  	<!-- Skeleton CSS -->
+  	<link rel="stylesheet" type="text/css" th:href="@{/css/skeleton/normalize.css}"/>
+  	<link rel="stylesheet" type="text/css" th:href="@{/css/skeleton/skeleton.css}"/>
+  	
+  	<!-- Fonts CSS -->
+  	<link rel="stylesheet" type="text/css" th:href="@{/css/main/fonts.css}"/>
+  	
+  	<!-- Main CSS -->
+  	<link rel="stylesheet" type="text/css" th:href="@{/css/main/style.css}"/>
+  
+  </head>
+  <body>
+    <div th:replace="layout/header.html :: header"></div>
+    <div>CONTENIDO</div>
+    <div th:replace="layout/footer.html :: footer"></div>
+    
+    <script type="text/javascript" th:src="@{/js/jquery/jquery-3.3.1.min.js}"></script>
+  </body>
+</html>

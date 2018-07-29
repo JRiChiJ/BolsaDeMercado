@@ -1,0 +1,14 @@
+html, body {
+	background-color: #FAFAFA;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+
+/* ESTILOS GENERALES */
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}

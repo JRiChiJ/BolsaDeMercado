@@ -30,7 +30,7 @@ public class MainController {
 			}
 		}
 
-		return "test";
+		return "layout/layout";
 	}
 	
 }

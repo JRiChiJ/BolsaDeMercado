@@ -14,6 +14,7 @@ public class Inventario {
 	private Long inventarioId;
 	private Long medidaId;
 	private Long detalleId;
+	private Double cantidad;
 
 	public Long getInventarioId() {
 		return inventarioId;
@@ -37,5 +38,13 @@ public class Inventario {
 
 	public void setDetalleId(Long detalleId) {
 		this.detalleId = detalleId;
+	}
+
+	public Double getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(Double cantidad) {
+		this.cantidad = cantidad;
 	}
 }

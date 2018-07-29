@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+  	<meta charset="UTF-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  	<!-- Skeleton CSS -->
+  	<link rel="stylesheet" type="text/css" th:href="@{/css/skeleton/normalize.css}"/>
+  	<link rel="stylesheet" type="text/css" th:href="@{/css/skeleton/skeleton.css}"/>
+  	
+  	<!-- Fonts CSS -->
+  	<link rel="stylesheet" type="text/css" th:href="@{/css/main/fonts.css}"/>
+  	
+  	<!-- Main CSS -->
+  	<link rel="stylesheet" type="text/css" th:href="@{/css/main/style.css}"/>
+  
+  </head>
+  <body>
+    <div th:replace="layout/header.html :: header"></div>
+    <main class="container">
+    	<form id="newUserForm" method="POST" th:action="@{/productos/submitAddComercialProductoToPuesto}">
+    		<input type="hidden" id="puestoId" name="puestoId" th:value="${puestoId}">
+    		<input type="hidden" id="puestoId" name="categoriaId" th:value="${categoriaId}">
+    		<input type="hidden" id="productoId" name="productoId" th:value="${productoId}">
+    		<input type="hidden" id="medidaId" name="medidaId" th:value="${medidaId}">
+    		<div class="row">
+	    		<div class="four columns text-right">
+	    			<label for="username">Cantidad</label>
+	    		</div>
+				<div class="eight columns">
+					<input class="u-full-width" id="cantidad" name="cantidad" type="text">
+				</div>
+    		</div>
+							
+			<div class="row">
+				<div class="four columns text-right">
+    				<label for="password">Precio</label>
+	    		</div>
+				<div class="eight columns">
+					<input class="u-full-width" id="precio" name="precio" type="text">
+				</div>
+			</div>
+			<div class="text-center">
+				<input class="button-primary" value="Registrar" type="submit">
+				<a class="button" th:href="@{'/productos/listProductosByCategoriaToAdd?categoriaId='+${categoriaId}+'&puestoId='+${puestoId}}">Volver</a>
+			</div>
+		</form>
+    </main>
+    <div th:replace="layout/footer.html :: footer"></div>
+    
+    <!-- JQuery JS -->
+  	<script type="text/javascript" th:src="@{/js/jquery/jquery-3.3.1.min.js}"></script>
+  	</body>
+</html>

@@ -10,7 +10,9 @@ import javax.persistence.Table;
 
 @Entity
 @NamedQueries({
-		@NamedQuery(query = "SELECT DISTINCT e.establecimientoId, e.nombre, e.direccion FROM Establecimiento e LEFT JOIN Puesto p ON p.establecimientoId = e.establecimientoId WHERE p.duenoId = :personaId OR p.vendedorId = :personaId AND p.establecimientoId = e.establecimientoId", name = "Establecimiento.listAllEstablecimientosByPersona") })
+		@NamedQuery(query = "SELECT DISTINCT e.establecimientoId, e.nombre, e.direccion FROM Establecimiento e LEFT JOIN Puesto p ON p.establecimientoId = e.establecimientoId WHERE p.duenoId = :personaId OR p.vendedorId = :personaId AND p.establecimientoId = e.establecimientoId", name = "Establecimiento.listAllEstablecimientosByPersona"),
+		@NamedQuery(query = "FROM Establecimiento e WHERE e.establecimientoId = :establecimientoId", name = "Establecimiento.dataByEstablecimientoId")
+		})
 @Table(name = "establecimientos")
 public class Establecimiento {
 	@Id

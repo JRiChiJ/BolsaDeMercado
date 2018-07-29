@@ -7,4 +7,6 @@ import com.bolsademercado.app.models.Establecimiento;
 
 public interface EstablecimientoRepository extends CrudRepository<Establecimiento, Long> {
 	Iterable<Object> listAllEstablecimientosByPersona(@Param("personaId") Long personaId);
+	
+	Establecimiento dataByEstablecimientoId(@Param("establecimientoId") Long establecimientoId);
 }

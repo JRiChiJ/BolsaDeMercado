@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.bolsademercado.app.services.EstablecimientoService;
 import com.bolsademercado.app.services.PuestoService;
 
 @Controller
@@ -18,6 +19,9 @@ import com.bolsademercado.app.services.PuestoService;
 public class PuestoController {
 	@Autowired
 	PuestoService puestoService;
+	
+	@Autowired
+	EstablecimientoService establecimientoService;
 
 	@RequestMapping(value = "/listAllPuestosByEstablecimiento", method = RequestMethod.GET)
 	public String listAllPuestosByEstablecimiento(Model model,
@@ -32,6 +36,7 @@ public class PuestoController {
 					(long) httpSession.getAttribute("personaId"));
 			
 			model.addAttribute("puestoList", puestoList);
+			model.addAttribute("establecimientoData", establecimientoService.dataByEstablecimientoId(establecimientoId));
 			
 			return "vendedor/listAllPuestosByEstablecimiento";
 		} else {

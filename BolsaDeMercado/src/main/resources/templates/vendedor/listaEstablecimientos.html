@@ -16,20 +16,54 @@
   
   </head>
   <body>
-    <div th:replace="layout/header.html :: header"></div>
-    
-	<main class="container mercadoList">
+  
+	<main class="container wrapper">
+	<div th:replace="layout/header.html :: header"></div>
+	 
+	<h5 class="main-title text-center"><span>Bienvenido al gestor de control de compra / venta de productos</span></h5>
+	<div class="content">
 		<div class="row">
+			<div class="twelve columns text-center">
+				Plataforma web para el monitoreo de diferentes productos <b>(carne, vegetales, frutas, etc...) de los distintos mercados. Se ve la variabilidad de los diferentes productos que ofrecen los dueños de los puertos que se ubican en los mercados.
+			</div>
+		</div>
+		<h3 class="text-center">
+			Por favor ubica el mercado del cual quisieras inspeccionar / administrar:
+		</h3>
+	</div>
+	
+	
+	<div class="itemList">
+		<th:block th:each="establecimiento : ${establecimientoList}">
+			<div class="item offset-by-one five columns">
+				<h5 th:text="${establecimiento[1]}">Mercado 1</h5>
+				<div class="row content">
+					<div class="twelve columns text-center">
+						<div class="title twelve columns">Direccion</div>
+						<p th:text="${establecimiento[2]}"></p>
+					</div>
+				</div>
+				<div class="row buttonRow">
+					<div class="six columns">
+						<a class="button-adm" th:href="@{'/puestos/listAllPuestosByEstablecimiento?establecimientoId=' + ${establecimiento[0]}}">Administrar locales</a>
+					</div>
+					<div class="six columns">
+						<a class="button-view" href="#">Consultar datos</a>
+					</div>
+				</div>
+			</div>
+		</th:block>
+	</div>
+		<!-- <div class="row">
 			<th:block th:each="establecimiento : ${establecimientoList}">
-				<a th:href="@{'/puestos/listAllPuestosByEstablecimiento?establecimientoId=' + ${establecimiento[0]}}" class="offset-by-three six columns button-green">
+				<a  class="offset-by-three six columns button-green">
 					<h5 th:text="${establecimiento[1]}"></h5>
 					<small th:text="${establecimiento[2]}"></small>
 				</a>
 			</th:block>
-		</div>
+		</div>  -->
+		<!-- <div th:replace="layout/footer.html :: footer"></div> -->
 	</main>
-
-    <div th:replace="layout/footer.html :: footer"></div>
     
     <script type="text/javascript" th:src="@{/js/jquery/jquery-3.3.1.min.js}"></script>
   </body>

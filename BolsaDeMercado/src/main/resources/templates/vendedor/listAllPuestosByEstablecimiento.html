@@ -16,19 +16,26 @@
   
   </head>
   <body>
-    <div th:replace="layout/header.html :: header"></div>
-    
-	<main class="container mercadoList">
-		<div class="row">
+  
+	<main class="container wrapper">
+	<div th:replace="layout/header.html :: header"></div>
+	
+	<div class="row">
+		<div class="five columns itemDescription">
+			<h5 class="text-center">Has seleccionado el siguiente establecimiento</h5>
+		</div>
+	</div>
+	
+	<div class="row">
 			<th:block th:each="puesto : ${puestoList}">
 				<a th:href="@{'/categorias/listAllCategoriesToAddPuesto?puestoId=' + ${puesto[0].puestoId}}" class="offset-by-three six columns button-green">
 					<h5 class="text-center" th:text="'Puesto ' + ${puesto[0].puestoId}"></h5>
 				</a>
 			</th:block>
 		</div>
+	
+		<!-- <div th:replace="layout/footer.html :: footer"></div> -->
 	</main>
-
-    <div th:replace="layout/footer.html :: footer"></div>
     
     <script type="text/javascript" th:src="@{/js/jquery/jquery-3.3.1.min.js}"></script>
   </body>

@@ -7,8 +7,8 @@
   <body>
     <header th:fragment="header" class="row">
 		<div class="twelve columns text-right">
-			<span th:text="${username}"></span>
-			<a th:href="@{/user/logout}" class="button-logout" href="#">Cerrar sesión</a>
+			Bienvenido <b th:text="${session.username} "></b>
+			<a th:href="@{/user/logout}" class="button-logout" href="#">Salir del sistema</a>
 		</div>
     </header>
   </body>

@@ -20,12 +20,20 @@
     
 	<main class="container mercadoList">
 		<div class="row">
-			<th:block th:each="establecimiento : ${establecimientoList}">
-				<a th:href="@{'/puestos/listAllPuestosByEstablecimiento?establecimientoId=' + ${establecimiento[0]}}" class="offset-by-three six columns button-green">
-					<h5 th:text="${establecimiento[1]}"></h5>
-					<small th:text="${establecimiento[2]}"></small>
-				</a>
-			</th:block>
+			<table class="twelve columns">
+				<thead>
+					<tr>
+						<th>Categoria</th>
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:each="categoria : ${categoriaList}">
+						<tr>
+							<td><a th:href="@{'/productos/listProductosByCategoria?categoriaId='+${categoria.categoriaId}+'&puestoId='+${puestoId}}" th:text="${categoria.nombre}"></a></td>
+						</tr>
+					</th:block>
+				</tbody>
+			</table>
 		</div>
 	</main>
 

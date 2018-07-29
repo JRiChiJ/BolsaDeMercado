@@ -29,7 +29,7 @@
 				<tbody>
 					<th:block th:each="categoria : ${categoriaList}">
 						<tr>
-							<td><a th:href="@{'/productos/listProductosByCategoria?categoriaId='+${categoria[0]}}" th:text="${categoria[1]}"></a></td>
+							<td><a th:href="@{'/productos/listProductosByCategoria?categoriaId='+${categoria[0]}+'&puestoId='+${puestoId}}" th:text="${categoria[1]}"></a></td>
 						</tr>
 					</th:block>
 				</tbody>

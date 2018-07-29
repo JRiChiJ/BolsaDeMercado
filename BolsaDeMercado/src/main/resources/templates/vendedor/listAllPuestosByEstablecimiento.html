@@ -21,7 +21,7 @@
 	<main class="container mercadoList">
 		<div class="row">
 			<th:block th:each="puesto : ${puestoList}">
-				<a th:href="@{'/categorias/listCategoriasByPersonaPuestoWithProducts?puestoId=' + ${puesto[0].puestoId}}" class="offset-by-three six columns button-green">
+				<a th:href="@{'/categorias/listAllCategoriesToAddPuesto?puestoId=' + ${puesto[0].puestoId}}" class="offset-by-three six columns button-green">
 					<h5 class="text-center" th:text="'Puesto ' + ${puesto[0].puestoId}"></h5>
 				</a>
 			</th:block>

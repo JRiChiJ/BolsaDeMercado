@@ -23,17 +23,48 @@
 	<div class="row">
 		<div class="five columns itemDescription">
 			<h5 class="text-center">Has seleccionado el siguiente establecimiento</h5>
+			<div class="content">
+				<div class="row">
+					<div class="text-right four columns">
+						<b>Identificador:</b>
+					</div>
+					<div class="text-center eight columns" th:text="${establecimientoData.establecimientoId}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="text-right four columns">
+						<b>Nombre:</b>
+					</div>
+					<div class="text-center eight columns" th:text="${establecimientoData.nombre}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="text-right four columns">
+						<b>Direccion:</b>
+					</div>
+					<div class="text-center eight columns" th:text="${establecimientoData.direccion}">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="seven columns">
+			<h5 class="main-title text-left">
+				Ubica un local relacionado a tu persona para poder administrar:
+			</h5>
+			<div class="itemList puestoList">
+				<th:block th:each="puesto : ${puestoList}">
+					<div class="item twelve columns">
+						<h5 class="row">
+							<span class="six columns" th:text="'Puesto nro. ' + ${puesto[0].puestoId}"></span>
+							<div class="six columns text-right">
+								<a th:href="@{/categorias/listAllCategoriesToAddPuesto?puestoId=1}">Administrar</a>
+							</div>
+						</h5>
+					</div>
+				</th:block>
+			</div>
 		</div>
 	</div>
-	
-	<div class="row">
-			<th:block th:each="puesto : ${puestoList}">
-				<a th:href="@{'/categorias/listAllCategoriesToAddPuesto?puestoId=' + ${puesto[0].puestoId}}" class="offset-by-three six columns button-green">
-					<h5 class="text-center" th:text="'Puesto ' + ${puesto[0].puestoId}"></h5>
-				</a>
-			</th:block>
-		</div>
-	
 		<!-- <div th:replace="layout/footer.html :: footer"></div> -->
 	</main>
     

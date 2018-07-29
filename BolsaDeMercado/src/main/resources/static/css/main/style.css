@@ -99,6 +99,11 @@ header {
 	margin: 0;
 	text-transform: uppercase;
 }
+.itemList .item .content {
+	height: 8rem;
+	min-height: 8rem;
+}
+
 .itemList .item .content .title {
 	text-transform: uppercase;
 }
@@ -142,4 +147,46 @@ header {
 	color: #202020;
 	font-size: 1.4rem;
 	font-weight: bold;
+}
+
+.itemDescription .content {
+	background-color: #FFFFFF;
+	color: #404040;
+	padding: 0.9rem;
+}
+
+.itemDescription .content .row:first-child {
+	border-top: none;
+}
+
+.itemDescription .content .row {
+	border-top: dashed 1px #CCCCCC;
+	padding: 1rem 0;
+}
+
+.puestoList .item {
+	margin: 1rem;
+}
+
+.itemTable h5 {
+	font-size: 1.8rem;
+	margin-top: 4rem;
+	text-transform: uppercase;
+}
+
+.itemTable table thead {
+	background-color: #303030;
+}
+
+.itemTable table thead th {
+	color: #FFFFFF;
+	text-align: center;
+}
+
+.itemTable table tbody td {
+	text-align: center;
+}
+
+.addForm {
+	margin-top: 4rem;
 }

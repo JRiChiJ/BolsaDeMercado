@@ -10,6 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @NamedQueries({
+	@NamedQuery(query = "FROM Producto p WHERE p.productoId = :productoId", name = "Producto.dataById"),
 	@NamedQuery(query = "FROM Producto p WHERE p.categoriaId = :categoriaId", name = "Producto.listAllProductosByCategory") })
 @Table(name = "productos")
 public class Producto {

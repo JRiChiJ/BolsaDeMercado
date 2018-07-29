@@ -12,6 +12,10 @@ public class ProductoService {
 	@Autowired
 	ProductoRepository productoRepository;
 	
+	public Producto dataById(Long productoId) {
+		return productoRepository.dataById(productoId);
+	}
+	
 	public Iterable<Producto> listAllProductosByCategory(Long categoriaId) {
 		return productoRepository.listAllProductosByCategory(categoriaId);
 	}

@@ -10,6 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @NamedQueries({
+		@NamedQuery(query = "FROM Categoria c WHERE c.categoriaId = :categoriaId", name = "Categoria.dataById"),
 		@NamedQuery(query = "SELECT DISTINCT c.categoriaId, c.nombre FROM Categoria c LEFT JOIN Producto as p ON p.categoriaId = c.categoriaId LEFT JOIN DetallePuestoProducto AS dpp ON dpp.productoId = p.productoId LEFT JOIN Puesto AS pu ON pu.puestoId = dpp.puestoId WHERE pu.puestoId = :puestoId", name = "Categoria.listCategoriasByPersonaPuestoWithProducts") })
 @Table(name = "categorias")
 public class Categoria {

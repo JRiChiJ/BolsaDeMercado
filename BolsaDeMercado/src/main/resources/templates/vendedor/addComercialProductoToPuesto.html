@@ -15,26 +15,111 @@
   	<link rel="stylesheet" type="text/css" th:href="@{/css/main/style.css}"/>
   
   </head>
-  <body>
-    <div th:replace="layout/header.html :: header"></div>
-    <main class="container">
-    	<form id="newUserForm" method="POST" th:action="@{/productos/submitAddComercialProductoToPuesto}">
-    		<input type="hidden" id="puestoId" name="puestoId" th:value="${puestoId}">
-    		<input type="hidden" id="puestoId" name="categoriaId" th:value="${categoriaId}">
-    		<input type="hidden" id="productoId" name="productoId" th:value="${productoId}">
-    		<input type="hidden" id="medidaId" name="medidaId" th:value="${medidaId}">
-    		<div class="row">
+  <body> 
+	<main class="container wrapper">
+	<div th:replace="layout/header.html :: header"></div>
+	
+	<div class="row">
+		<div class="five columns itemDescription">
+			<h5 class="text-center">Has seleccionado el siguiente establecimiento</h5>
+			<div class="content">
+				<div class="row">
+					<div class="text-right four columns">
+						<b>Identificador:</b>
+					</div>
+					<div class="text-center eight columns" th:text="${establecimientoData.establecimientoId}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="text-right four columns">
+						<b>Nombre:</b>
+					</div>
+					<div class="text-center eight columns" th:text="${establecimientoData.nombre}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="text-right four columns">
+						<b>Direccion:</b>
+					</div>
+					<div class="text-center eight columns" th:text="${establecimientoData.direccion}">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="offset-by-one six columns itemDescription">
+			<h5 class="text-center">Has seleccionado el siguiente local</h5>
+			<div class="content">
+				<div class="row">
+					<div class="text-right six columns">
+						<b>Numero de Puesto:</b>
+					</div>
+					<div class="text-center six columns" th:text="${puestoData.puestoId}">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row addForm">
+		<form class="eight columns offset-by-two" id="newUserForm" method="POST" th:action="@{/productos/submitAddComercialProductoToPuesto}">
+	   		<input type="hidden" id="puestoId" name="puestoId" th:value="${puestoId}">
+	   		<input type="hidden" id="puestoId" name="categoriaId" th:value="${categoriaId}">
+	   		<input type="hidden" id="productoId" name="productoId" th:value="${productoId}">
+	   		<div class="row">
+	   			<div class="four columns text-right">
+	    			<label for="establecimientoNombre">Establecimiento</label>
+	    		</div>
+				<div class="eight columns text-center">
+					<span th:text="${establecimientoData.nombre}"></span>
+				</div>
+	   		</div>
+	   		<div class="row">
+	   			<div class="four columns text-right">
+	    			<label for="puestoNombre">Numero de Puesto</label>
+	    		</div>
+				<div class="eight columns text-center">
+					<span th:text="${puestoData.puestoId}"></span>
+				</div>
+	   		</div>
+	   		<div class="row">
+	   			<div class="four columns text-right">
+	    			<label for="categoriaNombre">Categoria</label>
+	    		</div>
+				<div class="eight columns text-center">
+					<span th:text="${categoriaData.nombre}"></span>
+				</div>
+	   		</div>
+	   		<div class="row">
+	   			<div class="four columns text-right">
+	    			<label for="productoNombre">Producto</label>
+	    		</div>
+				<div class="eight columns text-center">
+					<span th:text="${productoData.nombre}"></span>
+				</div>
+	   		</div>
+	   		<div class="row">
+	   			<div class="four columns text-right">
+	    			<label for="medidaId">Medida de peso</label>
+	    		</div>
+				<div class="eight columns text-center">
+					<select class="u-full-width" name="medidaId" id="medidaId">
+						<th:block th:each="medida : ${medidaList}">
+							<option th:value="${medida.medidaId}" th:text="${medida.simbolo}+' - '+${medida.nombre}"></option>
+						</th:block>
+					</select>
+				</div>
+	   		</div>
+	   		<div class="row">
 	    		<div class="four columns text-right">
 	    			<label for="username">Cantidad</label>
 	    		</div>
 				<div class="eight columns">
 					<input class="u-full-width" id="cantidad" name="cantidad" type="text">
 				</div>
-    		</div>
+	   		</div>
 							
 			<div class="row">
 				<div class="four columns text-right">
-    				<label for="password">Precio</label>
+	   				<label for="password">Precio Unitario</label>
 	    		</div>
 				<div class="eight columns">
 					<input class="u-full-width" id="precio" name="precio" type="text">
@@ -45,10 +130,11 @@
 				<a class="button" th:href="@{'/productos/listProductosByCategoriaToAdd?categoriaId='+${categoriaId}+'&puestoId='+${puestoId}}">Volver</a>
 			</div>
 		</form>
-    </main>
-    <div th:replace="layout/footer.html :: footer"></div>
+	</div>
+	
+		<!-- <div th:replace="layout/footer.html :: footer"></div> -->
+	</main>
     
-    <!-- JQuery JS -->
-  	<script type="text/javascript" th:src="@{/js/jquery/jquery-3.3.1.min.js}"></script>
-  	</body>
+    <script type="text/javascript" th:src="@{/js/jquery/jquery-3.3.1.min.js}"></script>
+  </body>
 </html>

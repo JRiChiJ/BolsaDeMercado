@@ -15,29 +15,71 @@
   	<link rel="stylesheet" type="text/css" th:href="@{/css/main/style.css}"/>
   
   </head>
-  <body>
-    <div th:replace="layout/header.html :: header"></div>
-    
-	<main class="container mercadoList">
-		<div class="row">
-			<table class="twelve columns">
-				<thead>
-					<tr>
-						<th>Categoria</th>
-					</tr>
-				</thead>
-				<tbody>
-					<th:block th:each="categoria : ${categoriaList}">
+  <body> 
+	<main class="container wrapper">
+	<div th:replace="layout/header.html :: header"></div>
+	
+	<div class="row">
+		<div class="five columns itemDescription">
+			<h5 class="text-center">Has seleccionado el siguiente establecimiento</h5>
+			<div class="content">
+				<div class="row">
+					<div class="text-right four columns">
+						<b>Identificador:</b>
+					</div>
+					<div class="text-center eight columns" th:text="${establecimientoData.establecimientoId}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="text-right four columns">
+						<b>Nombre:</b>
+					</div>
+					<div class="text-center eight columns" th:text="${establecimientoData.nombre}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="text-right four columns">
+						<b>Direccion:</b>
+					</div>
+					<div class="text-center eight columns" th:text="${establecimientoData.direccion}">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="offset-by-one six columns itemDescription">
+			<h5 class="text-center">Has seleccionado el siguiente local</h5>
+			<div class="content">
+				<div class="row">
+					<div class="text-right six columns">
+						<b>Numero de Puesto:</b>
+					</div>
+					<div class="text-center six columns" th:text="${puestoData.puestoId}">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row itemTable">
+		<h5 class="text-center">Listado de Categorias</h5>
+		<table class="u-full-width">
+			<thead>
+				<tr>
+					<th>Identificador</th>
+					<th>Categoria</th>
+				</tr>
+			</thead>
+			<tbody>
+			 <th:block th:each="categoria : ${categoriaList}">
 						<tr>
+							<td th:text="${categoria.categoriaId}"></td>
 							<td><a th:href="@{'/productos/listProductosByCategoriaToAdd?categoriaId='+${categoria.categoriaId}+'&puestoId='+${puestoId}}" th:text="${categoria.nombre}"></a></td>
 						</tr>
 					</th:block>
-				</tbody>
-			</table>
-		</div>
+			</tbody>
+		</table>
+	</div>
+		<!-- <div th:replace="layout/footer.html :: footer"></div> -->
 	</main>
-
-    <div th:replace="layout/footer.html :: footer"></div>
     
     <script type="text/javascript" th:src="@{/js/jquery/jquery-3.3.1.min.js}"></script>
   </body>

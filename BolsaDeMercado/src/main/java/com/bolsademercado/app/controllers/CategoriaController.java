@@ -12,7 +12,10 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.bolsademercado.app.models.Categoria;
+import com.bolsademercado.app.models.Puesto;
 import com.bolsademercado.app.services.CategoriaService;
+import com.bolsademercado.app.services.EstablecimientoService;
+import com.bolsademercado.app.services.PuestoService;
 
 @Controller
 @RequestMapping(value = "/categorias")
@@ -21,6 +24,12 @@ public class CategoriaController {
 	@Autowired
 	CategoriaService categoriaService;
 	
+	@Autowired
+	PuestoService puestoService;
+	
+	@Autowired
+	EstablecimientoService establecimientoService;
+	
 	@RequestMapping(value = "listAllCategoriesToAddPuesto", method = RequestMethod.GET)
 	public String listAllCategoriesToAddPuesto(Model model, @RequestParam(name = "puestoId", required = true, defaultValue = "0") Long puestoId) {
 		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder
@@ -28,9 +37,12 @@ public class CategoriaController {
 		HttpSession httpSession = servletRequestAttributes.getRequest().getSession();
 		
 		if (httpSession.getAttribute("isLogged") != null) {
+			Puesto puestoData = puestoService.dataById(puestoId);
 			Iterable<Categoria> categoriaList = categoriaService.listarCategorias();
 			model.addAttribute("categoriaList", categoriaList);
 			model.addAttribute("puestoId", puestoId);
+			model.addAttribute("puestoData", puestoData);	
+			model.addAttribute("establecimientoData", establecimientoService.dataByEstablecimientoId(puestoData.getEstablecimientoId()));
 			
 			return "vendedor/listAllCategoriesToAddPuesto";
 		} else {

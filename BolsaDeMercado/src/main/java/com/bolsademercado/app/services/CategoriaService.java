@@ -11,6 +11,10 @@ public class CategoriaService {
 
 	@Autowired
 	private CategoriaRepository categoriaRepository;
+	
+	public Categoria dataById(Long categoriaId) {
+		return categoriaRepository.dataById(categoriaId);
+	}
 
 	public Iterable<Categoria> listarCategorias() {
 		return categoriaRepository.findAll();

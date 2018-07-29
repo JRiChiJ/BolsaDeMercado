@@ -7,10 +7,10 @@ import com.bolsademercado.app.repositories.EstablecimientoRepository;
 
 @Service
 public class EstablecimientoService {
-	
+
 	@Autowired
 	private EstablecimientoRepository establecimientoRepository;
-	
+
 	public Iterable<Object> listAllEstablecimientosByPersona(Long personaId) {
 		return establecimientoRepository.listAllEstablecimientosByPersona(personaId);
 	}

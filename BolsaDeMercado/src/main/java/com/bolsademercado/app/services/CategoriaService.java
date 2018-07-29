@@ -11,9 +11,13 @@ public class CategoriaService {
 
 	@Autowired
 	private CategoriaRepository categoriaRepository;
-	
+
 	public Iterable<Categoria> listarCategorias(String nombre) {
 		return categoriaRepository.listarCategorias(nombre);
 	}
-	
+
+	public Iterable<Object> listCategoriasByPersonaPuestoWithProducts(Long puestoId) {
+		return categoriaRepository.listCategoriasByPersonaPuestoWithProducts(puestoId);
+	}
+
 }

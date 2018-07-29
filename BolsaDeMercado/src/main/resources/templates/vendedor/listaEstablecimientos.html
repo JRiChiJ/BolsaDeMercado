@@ -21,9 +21,9 @@
 	<main class="container mercadoList">
 		<div class="row">
 			<th:block th:each="establecimiento : ${establecimientoList}">
-				<a href="#" class="offset-by-three six columns button-green">
-					<h5 th:text="${establecimiento[0].nombre}"></h5>
-					<small th:text="${establecimiento[0].direccion}"></small>
+				<a th:href="@{'/establecimientos/listAllPuestosByEstablecimiento?establecimientoId=' + ${establecimiento[0]}}" class="offset-by-three six columns button-green">
+					<h5 th:text="${establecimiento[1]}"></h5>
+					<small th:text="${establecimiento[2]}"></small>
 				</a>
 			</th:block>
 		</div>

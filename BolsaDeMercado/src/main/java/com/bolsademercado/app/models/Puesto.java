@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(query = "FROM Puesto p inner join Establecimiento e on p.establecimientoId = e.establecimientoId AND p.establecimientoId = :establecimientoId AND ( p.duenoId = :personaId OR p.vendedorId = :personaId)", name = "Puesto.listAllPuestosByEstablecimiento") })
+		@NamedQuery(query = "FROM Puesto p inner join Establecimiento e on p.establecimientoId = e.establecimientoId AND p.establecimientoId = :establecimientoId AND ( p.duenoId = :personaId OR p.vendedorId = :personaId)", name = "Puesto.listAllPuestosByEstablecimiento") })
 @Table(name = "puestos")
 public class Puesto {
 	@Id

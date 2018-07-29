@@ -9,8 +9,8 @@ import com.bolsademercado.app.repositories.PuestoRepository;
 public class PuestoService {
 	@Autowired
 	private PuestoRepository puestoRepository;
-	
-	public Iterable<Object> listAllPuestosByEstablecimiento(Long establecimientoId,Long personaId) {
-		return puestoRepository.listAllPuestosByEstablecimiento(establecimientoId,personaId);
+
+	public Iterable<Object> listAllPuestosByEstablecimiento(Long establecimientoId, Long personaId) {
+		return puestoRepository.listAllPuestosByEstablecimiento(establecimientoId, personaId);
 	}
 }

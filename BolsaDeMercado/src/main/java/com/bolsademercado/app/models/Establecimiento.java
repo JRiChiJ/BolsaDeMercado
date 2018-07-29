@@ -13,6 +13,18 @@ public class Establecimiento {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long establecimientoId;
 
+	private String nombre;
+	private String direccion;
+	private int status;
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
 	public Long getEstablecimientoId() {
 		return establecimientoId;
 	}
@@ -36,8 +48,4 @@ public class Establecimiento {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-
-	private String nombre;
-	private int status;
-
 }

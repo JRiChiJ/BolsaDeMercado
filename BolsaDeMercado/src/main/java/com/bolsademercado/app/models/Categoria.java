@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @NamedQueries ({
-	@NamedQuery(query = "FROM Categoria c WHERE c.nombre = :nombre", name = "Categoria.listarCategorias")
+	@NamedQuery(query = "FROM Categoria c WHERE c.nombre LIKE :nombre", name = "Categoria.listarCategorias")
 })
 @Table(name = "categorias")
 public class Categoria {
@@ -20,7 +20,6 @@ public class Categoria {
 	
 	private String nombre;
 	private int status;
-	
 	
 	public Long getCategoriaId() {
 		return categoriaId;
